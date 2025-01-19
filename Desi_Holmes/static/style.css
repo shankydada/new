@@ -1,0 +1,104 @@
+
+        body {
+            font-family: 'Maven Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #34b3ea6d;
+            color: rgb(255, 255, 255);
+            padding: 20px;
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.434);
+            border: 3px solid #000000;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.238);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.368);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-family: 'Anonymous Pro', monospace;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #analysis-results,
+        #history-container {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.256);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+            color: rgb(255, 255, 255);
+        }
+
+        h2,
+        h3 {
+            color: hsl(122, 39%, 49%);
+           
+        }
+
+        video {
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            height: 120%;
+            position: absolute;
+            z-index: 1;
+            left: 0px;
+            top: 0px;
+        }
+        .section{
+        z-index: 3;
+        position: absolute;
+        right: 0;
+        left 0;
+        bottom: 0;
+        top: 0;
+        }

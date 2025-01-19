@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href={{url_for('static', filename="style.css")}}>
+</head>
+<body>
+
+    <div>
+        <video autoplay muted loop src="{{ url_for('static', filename='vdo1.mp4') }}" controls></video>
+       <!-- <video autoplay muted loop>
+            <source src="./vdo1.mp4" type="video/mp4" />
+        </video>-->
+    </div>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Sherlock Holmes Case Prediction</h1>
+            <div class="field">
+                <label class="label">Case Description</label>
+                <div class="control">
+                    <textarea id="description" class="textarea" placeholder="Enter the case description here..."></textarea>
+                </div>
+            </div>
+            <div class="control">
+                <button class="button is-primary" onclick="predictCase()">Predict</button>
+            </div>
+            <div id="result" class="content mt-5"></div>
+        </div>
+    </section>
+    <script>
+        async function predictCase() {
+            const description = document.getElementById('description').value;
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ description })
+            });
+            const data = await response.json();
+            document.getElementById('result').innerHTML = `
+                <h2 class="subtitle">Predicted Status: ${data.prediction}</h2>
+                <h4>Observations:</h4>
+                <ul>${data.analysis.Observations.map(obs => `<li>${obs}</li>`).join('')}</ul>
+                <h4>Leads:</h4>
+                <ul>${data.analysis.Leads.map(lead => `
+                    <li>
+                        <strong>${lead.Lead}</strong><br/>
+                        Confidence Score: ${lead['Confidence Score']}<br/>
+                        Suggested Action: ${lead['Suggested Action']}
+                    </li>`).join('')}
+                </ul>
+                <h4>Next Steps:</h4>
+                <ul>${data.analysis['Next Steps'].map(step => `<li>${step}</li>`).join('')}</ul>
+            `;
+        }
+    </script>
+</body>
+</html>
